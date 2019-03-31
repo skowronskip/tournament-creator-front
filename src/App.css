@@ -1,5 +1,5 @@
 .app-settings {
-  background-color: #282c34;
+  background-color: #404040;
   color: white;
   height: 100%; }
 
@@ -62,5 +62,24 @@
 
 .link-button:hover {
   color: white; }
+
+.login-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 450px;
+  margin-top: -225px;
+  margin-left: -200px;
+  border: 1px solid #888;
+  background-color: #505050;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center; }
+  .login-box input, .login-box input:focus {
+    background-color: #404040;
+    color: #cccccc;
+    border: 1px solid #888;
+    border-radius: 20px; }
 
 /*# sourceMappingURL=App.css.map */

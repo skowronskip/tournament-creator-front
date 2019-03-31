@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
-const testReducer = (state = 'test', action: any) => {
-    return state;
-};
+import { authentication } from './authentication.reducer';
+import { users } from './users.reducer';
+import { alert } from './alert.reducer';
 
-export default combineReducers({
-    testReducer,
-});
+// @ts-ignore
+const rootReducer = combineReducers({authentication, users, alert});
+
+export default rootReducer;

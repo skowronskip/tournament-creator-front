@@ -14,7 +14,7 @@ export class LandingMenu extends PureComponent {
                     </Col>
                     <Col xs='6'>
                         <div className='float-right'>
-                            <Link className='link-button' to='#'>Log in</Link>
+                            <Link className='link-button' to='/login'>Log in</Link>
                             <Link className='button-primary-mini' to='#'>Sign up</Link>
                         </div>
                     </Col>
