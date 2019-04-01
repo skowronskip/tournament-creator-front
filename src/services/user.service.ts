@@ -3,6 +3,7 @@ import { authHeader } from '../helpers/auth-header';
 export const userService = {
     login,
     logout,
+    signup,
     getAll
 };
 
@@ -18,6 +19,20 @@ function login(email: string, password: string) {
         .then((user) => {
             localStorage.setItem('user', JSON.stringify(user));
             return user;
+        });
+}
+
+function signup(email: string, password: string, login: string) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, login })
+    };
+
+    return fetch(`http://localhost:4000/api/v1/users/register`, requestOptions)
+        .then(handleResponse)
+        .then((response) => {
+            return response;
         });
 }
 

@@ -5,7 +5,7 @@
   -webkit-transition: background-color 0.3s, color 0.3s;
   background-color: white;
   color: #404040;
-  padding: 15px 40px;
+  padding: 10px 30px;
   box-sizing: border-box;
   border: 2px white solid;
   border-radius: 50px;
@@ -20,7 +20,7 @@
 .button-primary-mini {
   @extend .button;
   font-size: 14px;
-  padding: 10px 25px;
+  padding: 8px 20px;
 
 }
 

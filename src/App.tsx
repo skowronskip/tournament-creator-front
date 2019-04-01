@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { history } from './helpers/history';
 import { alertActions } from './actions/alert.actions';
 import { PrivateRoute } from './components/PrivateRoute';
+import { AnonymousRoute} from './components/AnonymousRoute';
 import { LoginPage } from './containers/LoginPage/index';
+import { SignUpPage } from './containers/SignUpPage/index';
 import LandingPage from './containers/LandingPage';
 import { alertConstants } from './constants/alert.constatns';
 import { toast } from 'react-toastify';
@@ -42,7 +44,8 @@ class App extends React.Component<AppProps> {
                     <Switch>
                         <Route exact path='/' component={LandingPage} />
                         <PrivateRoute exact path='/test' component={Test} />
-                        <Route exact path='/login' component={LoginPage} />
+                        <AnonymousRoute exact path='/login' component={LoginPage} />
+                        <AnonymousRoute exact path='/signup' component={SignUpPage} />
                     </Switch>
                 </div>
             </Router>

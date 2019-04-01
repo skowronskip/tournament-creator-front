@@ -7,8 +7,46 @@ import { toast } from 'react-toastify';
 export const userActions = {
     login,
     logout,
+    signup,
     getAll
 };
+
+function signup(email: string, password: string, login: string) {
+    return (dispatch: any) => {
+        dispatch(request({ email }));
+
+        userService.signup(email, password, login)
+            .then(
+                (response: any) => {
+                    dispatch(success(response));
+                    history.push('/');
+                    toast.success(response.message, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
+                    });
+                },
+                (error) => {
+                    dispatch(failure(error));
+                    toast.error(error, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
+                    });
+                }
+            );
+    };
+
+    function request(user: any) { return { type: userConstants.SIGNUP_REQUEST, user }; }
+    function success(response: any) { return { type: userConstants.SIGNUP_SUCCESS, response }; }
+    function failure(error: any) { return { type: userConstants.SIGNUP_FAILURE, error }; }
+}
 
 function login(email: string, password: string) {
     return (dispatch: any) => {

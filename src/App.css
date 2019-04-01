@@ -25,7 +25,7 @@
   -webkit-transition: background-color 0.3s, color 0.3s;
   background-color: white;
   color: #404040;
-  padding: 15px 40px;
+  padding: 10px 30px;
   box-sizing: border-box;
   border: 2px white solid;
   border-radius: 50px; }
@@ -37,7 +37,7 @@
 
 .button-primary-mini {
   font-size: 14px;
-  padding: 10px 25px; }
+  padding: 8px 20px; }
 
 .button-secondary {
   background-color: transparent;
@@ -63,7 +63,7 @@
 .link-button:hover {
   color: white; }
 
-.login-box {
+.login-box, .signup-box {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -76,10 +76,14 @@
   border-radius: 5px;
   padding: 30px;
   text-align: center; }
-  .login-box input, .login-box input:focus {
+  .login-box input, .signup-box input, .login-box input:focus, .signup-box input:focus {
     background-color: #404040;
     color: #cccccc;
     border: 1px solid #888;
     border-radius: 20px; }
+
+.signup-box {
+  height: 650px;
+  margin-top: -350px; }
 
 /*# sourceMappingURL=App.css.map */

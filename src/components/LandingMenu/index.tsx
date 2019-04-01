@@ -37,7 +37,7 @@ class LandingMenu extends Component<LandingMenuProps, LandingMenuState> {
         return (
             <div className='float-right'>
                 <Link className='link-button' to='/login'>Log in</Link>
-                <Link className='button-primary-mini' to='#'>Sign up</Link>
+                <Link className='button-primary-mini' to='/signup'>Sign up</Link>
             </div>
         );
     }
