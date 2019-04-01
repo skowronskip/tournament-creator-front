@@ -1,0 +1,64 @@
+import React, {Component} from 'react';
+import '../../App.scss';
+import logo from '../../assets/logo.png';
+import avatar from '../../assets/avatar.png';
+import {Link} from 'react-router-dom';
+import {User} from '../../helpers/current-user';
+import {connect} from 'react-redux';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faCog, faCamera, faKey, faPlus, faTimes, faPenFancy} from '@fortawesome/free-solid-svg-icons';
+
+interface DashboardMenuProps {
+    user: any;
+    dispatch: any;
+}
+
+interface DashboardMenuState {
+    user: User | undefined;
+}
+
+class DashboardMenu extends Component<DashboardMenuProps, DashboardMenuState> {
+    public userMail() {
+        if (this.props.user) {
+            return this.props.user.email;
+
+        }
+        return '';
+    }
+    public render() {
+        return (
+            <div className='dashboard-menu'>
+                <div className='logo'>
+                    <Link to='/'><img src={logo} alt='Logo of the application'/></Link>
+                </div>
+                <div className='user'>
+                    <img src={avatar} alt='Avatar'/>
+                    <p>{this.userMail()}</p>
+                    <div className='spacer'/>
+                </div>
+                <div className='section'>
+                    <p>USER</p>
+                    <Link to='#'><FontAwesomeIcon icon={faCog} /> Edit user</Link>
+                    <Link to='#'><FontAwesomeIcon icon={faKey} /> Edit password</Link>
+                    <Link to='#'><FontAwesomeIcon icon={faCamera} /> Edit photo</Link>
+                </div>
+                <div className='section'>
+                    <p>TOURNAMENT</p>
+                    <Link to='#'><FontAwesomeIcon icon={faPlus} /> New Tournament</Link>
+                    <Link to='#'><FontAwesomeIcon icon={faPenFancy} /> Edit Tournament</Link>
+                    <Link to='#'><FontAwesomeIcon icon={faTimes} /> Delete Tournament</Link>
+                </div>
+            </div>
+        );
+    }
+}
+
+function mapStateToProps(state: any) {
+    const { user } = state.authentication && state.authentication.loggedIn ? state.authentication : false;
+    return {
+        user
+    };
+}
+
+const connectedDashboardMenu = connect(mapStateToProps)(DashboardMenu);
+export { connectedDashboardMenu as DashboardMenu };

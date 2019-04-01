@@ -1,5 +1,5 @@
 .app-settings {
-  background-color: #404040;
+  background-color: #202020;
   color: white;
   height: 100%; }
 
@@ -71,19 +71,77 @@
   height: 450px;
   margin-top: -225px;
   margin-left: -200px;
-  border: 1px solid #888;
-  background-color: #505050;
+  border: 1px solid #555;
+  background-color: #303030;
   border-radius: 5px;
   padding: 30px;
-  text-align: center; }
+  text-align: center;
+  color: #cccccc; }
   .login-box input, .signup-box input, .login-box input:focus, .signup-box input:focus {
-    background-color: #404040;
+    background-color: #202020;
     color: #cccccc;
-    border: 1px solid #888;
+    border: 1px solid #555;
     border-radius: 20px; }
 
 .signup-box {
   height: 650px;
   margin-top: -350px; }
+
+.dashboard {
+  width: 100%;
+  min-height: 100%;
+  display: flex; }
+
+.dashboard-menu {
+  background-color: #303030;
+  margin: 0 -15px;
+  color: white;
+  min-height: 100%;
+  width: 300px;
+  min-width: 300px; }
+  .dashboard-menu .logo {
+    height: 100px;
+    background-color: #151515; }
+  .dashboard-menu .logo a {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin: 20px 0; }
+  .dashboard-menu .user {
+    text-align: center;
+    padding: 30px 0 10px 0; }
+  .dashboard-menu .user p {
+    margin: 30px 0 20px 0;
+    font-size: 18px; }
+  .dashboard-menu .user img {
+    border-radius: 50%; }
+  .dashboard-menu .spacer {
+    display: block;
+    margin-left: 10%;
+    width: 80%;
+    height: 1px;
+    background-color: #808080;
+    margin-bottom: 10px; }
+  .dashboard-menu .section {
+    color: #cccccc;
+    width: 100%;
+    margin-bottom: 10px; }
+  .dashboard-menu .section p {
+    padding: 0 10px;
+    margin: 5px 0; }
+  .dashboard-menu .section a {
+    color: #cccccc;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 40px;
+    width: 100%;
+    display: block;
+    border-left: 3px transparent solid; }
+  .dashboard-menu .section a:hover {
+    text-decoration: none;
+    background-color: #505050;
+    border-left: 3px #136576 solid; }
+  .dashboard-menu .section svg {
+    margin: 0 20px; }
 
 /*# sourceMappingURL=App.css.map */

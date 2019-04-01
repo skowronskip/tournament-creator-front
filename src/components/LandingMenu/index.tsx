@@ -29,7 +29,8 @@ class LandingMenu extends Component<LandingMenuProps, LandingMenuState> {
             return (
                 <div className='float-right'>
                     {this.props.user ? this.props.user.email : null}
-                    <Link className='button-primary-mini ml-4' to='/' onClick={this.logout}>Log out</Link>
+                    <Link className='link-button ml-4' to='/dashboard'>Dashboard</Link>
+                    <Link className='button-primary-mini' to='/' onClick={this.logout}>Log out</Link>
                 </div>
             );
 
