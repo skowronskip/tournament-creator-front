@@ -6,9 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import configureStore from './store';
 import {Provider} from 'react-redux';
 
-
 const { store } = configureStore();
 
+
+// @ts-ignore
 ReactDOM.render(
     (
         <Provider store={store}>

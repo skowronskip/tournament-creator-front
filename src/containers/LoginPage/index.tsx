@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { userActions } from '../actions/user.actions';
+import { userActions } from '../../actions/user.actions';
 import {Col, Container, Row} from 'reactstrap';
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 import {Link} from 'react-router-dom';
 
 interface LoginPageProps {
@@ -18,7 +18,7 @@ interface LoginPageState {
     submitted: boolean;
 }
 
-class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
+class Index extends React.Component<LoginPageProps, LoginPageState> {
     constructor(props: any) {
         super(props);
 
@@ -98,5 +98,5 @@ function mapStateToProps(state: any) {
     };
 }
 
-const connectedLoginPage = connect(mapStateToProps)(LoginPage);
+const connectedLoginPage = connect(mapStateToProps)(Index);
 export { connectedLoginPage as LoginPage };

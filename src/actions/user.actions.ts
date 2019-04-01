@@ -2,6 +2,7 @@ import { userConstants } from '../constants/user.constants';
 import { userService } from '../services/user.service';
 import { alertActions } from './alert.actions';
 import { history } from '../helpers/history';
+import { toast } from 'react-toastify';
 
 export const userActions = {
     login,
@@ -18,10 +19,25 @@ function login(email: string, password: string) {
                 (user) => {
                     dispatch(success(user));
                     history.push('/');
+                    toast.success('Logged in successfully', {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
+                    });
                 },
                 (error) => {
                     dispatch(failure(error));
-                    dispatch(alertActions.error(error));
+                    toast.error('Bad credentials', {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
+                    });
                 }
             );
     };

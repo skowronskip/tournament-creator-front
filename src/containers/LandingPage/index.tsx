@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Col, Container, Row} from 'reactstrap';
 import '../../App.scss';
-import LandingMenu from '../../components/LandingMenu/index';
+import { LandingMenu } from '../../components/LandingMenu/index';
 import LandingIntroduction from '../../components/LandingPage/introduction';
 import { currentUser, User } from '../../helpers/current-user';
 
@@ -20,14 +20,6 @@ export class LandingPage extends Component<LandingPageProps, LandingPageState> {
             user: currentUser()
         };
     }
-
-    public UserData() {
-        if (this.state.user) {
-            return this.state.user.email;
-        }
-        return '';
-    }
-
     public render() {
         return (
             <Container fluid={true} className='landing-bg'>
@@ -38,7 +30,6 @@ export class LandingPage extends Component<LandingPageProps, LandingPageState> {
                 </Row>
                 <Row>
                     <Col xs='12'>
-                        {this.UserData()}
                         <LandingIntroduction/>
                     </Col>
                 </Row>

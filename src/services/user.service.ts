@@ -16,15 +16,12 @@ function login(email: string, password: string) {
     return fetch(`http://localhost:4000/api/v1/users/login`, requestOptions)
         .then(handleResponse)
         .then((user) => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('user', JSON.stringify(user));
-
             return user;
         });
 }
 
 function logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('user');
 }
 
