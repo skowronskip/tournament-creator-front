@@ -8,7 +8,6 @@ import {Provider} from 'react-redux';
 
 const { store } = configureStore();
 
-
 // @ts-ignore
 ReactDOM.render(
     (

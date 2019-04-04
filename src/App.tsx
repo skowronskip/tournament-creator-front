@@ -30,21 +30,44 @@ class App extends React.Component<AppProps> {
 
         const { dispatch } = this.props;
         history.listen((location, action) => {
-            // clear alert on location change
             dispatch(alertActions.clear());
         });
     }
-    public render() {
+    public handleAlert() {
         const { alert } = this.props;
+        if (alert && alert.message) {
+            switch (alert.type) {
+                case alertConstants.ERROR:
+                    return toast.error(alert.message, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
+                    });
+                case alertConstants.SUCCESS:
+                    return toast.success(alert.message, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true
+                    });
+            }
+        }
+    }
+    public componentDidUpdate(prevProps: Readonly<AppProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        this.handleAlert();
+    }
+    public render() {
         return (
             <Router history={history}>
                 <div className='app-settings'>
-                    {alert && alert.message &&
-                    <div className={`alert ${alert.type}`}>{alert.message}</div>
-                    }
                     <Switch>
                         <Route exact path='/' component={LandingPage} />
-                        <Route exact path='/dashboard' component={DashboardPage} />
+                        <PrivateRoute exact path='/dashboard' component={DashboardPage} />
                         <PrivateRoute exact path='/test' component={Test} />
                         <AnonymousRoute exact path='/login' component={LoginPage} />
                         <AnonymousRoute exact path='/signup' component={SignUpPage} />

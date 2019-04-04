@@ -20,25 +20,11 @@ function signup(email: string, password: string, login: string) {
                 (response: any) => {
                     dispatch(success(response));
                     history.push('/');
-                    toast.success(response.message, {
-                        position: 'top-right',
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true
-                    });
+                    dispatch(alertActions.success(response.message));
                 },
                 (error) => {
                     dispatch(failure(error));
-                    toast.error(error, {
-                        position: 'top-right',
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true
-                    });
+                    dispatch(alertActions.error(error));
                 }
             );
     };
@@ -57,25 +43,11 @@ function login(email: string, password: string) {
                 (user) => {
                     dispatch(success(user));
                     history.push('/');
-                    toast.success('Logged in successfully', {
-                        position: 'top-right',
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true
-                    });
+                    dispatch(alertActions.success('Logged in successfully'));
                 },
                 (error) => {
                     dispatch(failure(error));
-                    toast.error('Bad credentials', {
-                        position: 'top-right',
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true
-                    });
+                    dispatch(alertActions.error('Bad credentials'));
                 }
             );
     };
