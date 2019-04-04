@@ -13,6 +13,8 @@ import DashboardPage from './containers/DashboardPage';
 import { alertConstants } from './constants/alert.constatns';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {loaderActions} from './actions/loader.actions';
+import Loader from 'react-loader-spinner';
 
 toast.configure();
 
@@ -20,6 +22,10 @@ interface AppProps {
     alert: {
         type: alertConstants;
         message: string;
+    };
+    loader: {
+        loaded: boolean;
+        games: [];
     };
     dispatch: any;
 }
@@ -32,6 +38,7 @@ class App extends React.Component<AppProps> {
         history.listen((location, action) => {
             dispatch(alertActions.clear());
         });
+        dispatch(loaderActions.loadBackendData());
     }
     public handleAlert() {
         const { alert } = this.props;
@@ -64,7 +71,15 @@ class App extends React.Component<AppProps> {
     public render() {
         return (
             <Router history={history}>
-                <div className='app-settings'>
+                {!this.props.loader.loaded && <div className='loader'>
+                    <Loader
+                        type='Grid'
+                        color='#cccccc'
+                        height='50'
+                        width='50'
+                    />
+                </div>}
+                {this.props.loader.loaded && <div className='app-settings'>
                     <Switch>
                         <Route exact path='/' component={LandingPage} />
                         <PrivateRoute exact path='/dashboard' component={DashboardPage} />
@@ -72,16 +87,17 @@ class App extends React.Component<AppProps> {
                         <AnonymousRoute exact path='/login' component={LoginPage} />
                         <AnonymousRoute exact path='/signup' component={SignUpPage} />
                     </Switch>
-                </div>
+                </div>}
             </Router>
         );
     }
 }
 
 function mapStateToProps(state: any) {
-    const { alert } = state;
+    const { alert, loader } = state;
     return {
-        alert
+        alert,
+        loader
     };
 }
 

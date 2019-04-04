@@ -3,6 +3,19 @@
   color: white;
   height: 100%; }
 
+.loader {
+  background-color: #202020;
+  z-index: 10;
+  color: white;
+  margin: auto;
+  max-height: 100%; }
+  .loader svg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -25px; }
+
 .landing-bg {
   background-image: url("./assets/bg.png");
   background-size: auto;
