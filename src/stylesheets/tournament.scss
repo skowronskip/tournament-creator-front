@@ -1,0 +1,60 @@
+.tournament-bar:hover{
+  background-color: $main-background-3;
+}
+.tournament-bar {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  background-color: $main-background-2;
+  border-left: 3px $main-green solid;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 10px 0;
+
+  .image {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .info {
+    display: inline-block;
+    color: white;
+    vertical-align: middle;
+  }
+  .game {
+    color: #999999;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0;
+  }
+  .name {
+    color: #cccccc;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0;
+    padding: 0 0 5px 0;
+    box-sizing: border-box;
+  }
+  .additional-info {
+    display: inline-block;
+    color: white;
+    vertical-align: middle;
+    text-align: right;
+  }
+
+  .participants {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    color: #999999;
+  }
+
+  svg {
+    margin: 0 10px;
+  }
+}

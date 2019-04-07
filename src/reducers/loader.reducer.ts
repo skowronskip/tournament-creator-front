@@ -4,6 +4,12 @@ interface LoaderAction {
     type: loaderConstatns;
     payload: {};
 }
+
+export interface Game {
+    id: number;
+    name: string;
+    code: string;
+}
 const initialState = {
     loaded: false,
     games: []

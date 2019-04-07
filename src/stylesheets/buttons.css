@@ -1,6 +1,6 @@
 .button-primary-mini {
   background-color: white;
-  color: #404040;
+  color: $main-background-2;
   box-sizing: border-box;
   padding: 5px 15px;
   border: 1px white solid;

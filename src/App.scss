@@ -1,11 +1,17 @@
+$main-background: #202020;
+$main-background-2: #303030;
+$main-background-3: #404040;
+$main-green: #136576;
+
+
 .app-settings {
-  background-color: #202020;
+  background-color: $main-background;
   color: white;
   height: 100%;
 }
 
 .loader {
-  background-color: #202020;
+  background-color: $main-background;
   z-index: 10;
   color: white;
   margin: auto;
@@ -26,3 +32,4 @@
 @import 'stylesheets/buttons';
 @import 'stylesheets/login';
 @import 'stylesheets/dashboard';
+@import 'stylesheets/tournament';

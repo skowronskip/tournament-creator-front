@@ -9,7 +9,8 @@ import { AnonymousRoute} from './components/AnonymousRoute';
 import { LoginPage } from './containers/LoginPage/index';
 import { SignUpPage } from './containers/SignUpPage/index';
 import LandingPage from './containers/LandingPage';
-import DashboardPage from './containers/DashboardPage';
+import {DashboardPage} from './containers/DashboardPage';
+import {NewTournamentPage} from './containers/NewTournamentPage';
 import { alertConstants } from './constants/alert.constatns';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -83,6 +84,7 @@ class App extends React.Component<AppProps> {
                     <Switch>
                         <Route exact path='/' component={LandingPage} />
                         <PrivateRoute exact path='/dashboard' component={DashboardPage} />
+                        <PrivateRoute exact path='/dashboard/newTournament' component={NewTournamentPage} />
                         <PrivateRoute exact path='/test' component={Test} />
                         <AnonymousRoute exact path='/login' component={LoginPage} />
                         <AnonymousRoute exact path='/signup' component={SignUpPage} />

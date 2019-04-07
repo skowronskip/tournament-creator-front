@@ -1,6 +1,7 @@
 import { userConstants } from '../constants/user.constants';
 import { userService } from '../services/user.service';
 import { alertActions } from './alert.actions';
+import { tournamentActions } from './tournament.actions';
 import { history } from '../helpers/history';
 import { toast } from 'react-toastify';
 
@@ -42,6 +43,7 @@ function login(email: string, password: string) {
             .then(
                 (user) => {
                     dispatch(success(user));
+                    dispatch(tournamentActions.getMyTournaments());
                     history.push('/');
                     dispatch(alertActions.success('Logged in successfully'));
                 },

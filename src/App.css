@@ -37,7 +37,7 @@
   transition: background-color 0.3s, color 0.3s;
   -webkit-transition: background-color 0.3s, color 0.3s;
   background-color: white;
-  color: #404040;
+  color: #303030;
   padding: 10px 30px;
   box-sizing: border-box;
   border: 2px white solid;
@@ -58,7 +58,7 @@
 
 .button-secondary:hover {
   background-color: white;
-  color: #404040; }
+  color: #303030; }
 
 .button-primary-mini:hover {
   background-color: transparent;
@@ -156,5 +156,55 @@
     border-left: 3px #136576 solid; }
   .dashboard-menu .section svg {
     margin: 0 20px; }
+
+.dashboard-page {
+  padding: 100px 80px 0 100px; }
+
+.tournament-bar:hover {
+  background-color: #404040; }
+
+.tournament-bar {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  background-color: #303030;
+  border-left: 3px #136576 solid;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 10px 0; }
+  .tournament-bar .image {
+    display: inline-block;
+    margin-right: 20px; }
+  .tournament-bar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; }
+  .tournament-bar .info {
+    display: inline-block;
+    color: white;
+    vertical-align: middle; }
+  .tournament-bar .game {
+    color: #999999;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0; }
+  .tournament-bar .name {
+    color: #cccccc;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0;
+    padding: 0 0 5px 0;
+    box-sizing: border-box; }
+  .tournament-bar .additional-info {
+    display: inline-block;
+    color: white;
+    vertical-align: middle;
+    text-align: right; }
+  .tournament-bar .participants {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    color: #999999; }
+  .tournament-bar svg {
+    margin: 0 10px; }
 
 /*# sourceMappingURL=App.css.map */

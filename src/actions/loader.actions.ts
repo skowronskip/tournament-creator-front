@@ -1,6 +1,9 @@
+import _ from 'lodash';
 import { loaderConstatns } from '../constants/loader.constants';
 import { loaderService } from '../services/loader.service';
 import { alertActions } from './alert.actions';
+import { tournamentActions } from './tournament.actions';
+import {currentUser} from '../helpers/current-user';
 
 export const loaderActions = {
     loadBackendData
@@ -13,6 +16,9 @@ function loadBackendData() {
             .then(
                 (response: any) => {
                     dispatch(success(response));
+                    if (!_.isEmpty(currentUser())) {
+                        dispatch(tournamentActions.getMyTournaments());
+                    }
                 },
                 (error: any) => {
                     dispatch(failure(error));

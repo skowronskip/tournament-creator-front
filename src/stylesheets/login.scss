@@ -7,14 +7,14 @@
   margin-top: -225px;
   margin-left: -200px;
   border: 1px solid #555;
-  background-color: #303030;
+  background-color: $main-background-2;
   border-radius: 5px;
   padding: 30px;
   text-align: center;
   color: #cccccc;
 
   input, input:focus {
-    background-color: #202020;
+    background-color: $main-background;
     color: #cccccc;
     border: 1px solid #555;
     border-radius: 20px;

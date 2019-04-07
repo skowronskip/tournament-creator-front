@@ -4,7 +4,7 @@
   display: flex;
 }
 .dashboard-menu {
-  background-color: #303030;
+  background-color: $main-background-2;
   margin: 0 -15px;
   color: white;
   min-height: 100%;
@@ -69,13 +69,16 @@
 
   .section a:hover {
     text-decoration: none;
-    background-color: #404040;
-    border-left: 3px #136576 solid;
+    background-color: $main-background-3;
+    border-left: 3px $main-green solid;
   }
 
 
   .section svg {
     margin: 0 20px;
   }
+}
 
+.dashboard-page {
+  padding: 100px 80px 0 100px;
 }

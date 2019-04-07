@@ -7,9 +7,11 @@ import {User} from '../../helpers/current-user';
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCog, faCamera, faKey, faPlus, faTimes, faPenFancy} from '@fortawesome/free-solid-svg-icons';
+import {tournament, Tournament} from '../../reducers/tournament.reducer';
 
 interface DashboardMenuProps {
     user: any;
+    tournaments: Tournament[];
     dispatch: any;
 }
 
@@ -44,9 +46,12 @@ class DashboardMenu extends Component<DashboardMenuProps, DashboardMenuState> {
                 </div>
                 <div className='section'>
                     <p>TOURNAMENT</p>
-                    <Link to='#'><FontAwesomeIcon icon={faPlus} /> New Tournament</Link>
+                    <Link to='/dashboard/newTournament'><FontAwesomeIcon icon={faPlus} /> New Tournament</Link>
                     <Link to='#'><FontAwesomeIcon icon={faPenFancy} /> Edit Tournament</Link>
                     <Link to='#'><FontAwesomeIcon icon={faTimes} /> Delete Tournament</Link>
+                    {this.props.tournaments.map((tournament, index) => {
+                        return <p key={index}>{tournament.name}</p>
+                    })}
                 </div>
             </div>
         );
@@ -55,7 +60,9 @@ class DashboardMenu extends Component<DashboardMenuProps, DashboardMenuState> {
 
 function mapStateToProps(state: any) {
     const { user } = state.authentication && state.authentication.loggedIn ? state.authentication : false;
+    const { tournaments } = state.tournament;
     return {
+        tournaments,
         user
     };
 }
