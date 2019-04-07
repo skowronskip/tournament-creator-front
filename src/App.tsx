@@ -16,6 +16,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {loaderActions} from './actions/loader.actions';
 import Loader from 'react-loader-spinner';
+import {TournamentPage} from './containers/TournamentPage';
+import {currentUser} from './helpers/current-user';
+import {tournamentActions} from './actions/tournament.actions';
+import {TournamentMatchesPage} from './containers/TournamentMatchesPage';
+import {TournamentParticipantsPage} from './containers/TournamentParticipantsPage';
 
 toast.configure();
 
@@ -85,6 +90,9 @@ class App extends React.Component<AppProps> {
                         <Route exact path='/' component={LandingPage} />
                         <PrivateRoute exact path='/dashboard' component={DashboardPage} />
                         <PrivateRoute exact path='/dashboard/newTournament' component={NewTournamentPage} />
+                        <PrivateRoute exact path='/dashboard/tournament/:tournamentId' component={TournamentPage} />
+                        <PrivateRoute exact path='/dashboard/tournament/:tournamentId/matches' component={TournamentMatchesPage} />
+                        <PrivateRoute exact path='/dashboard/tournament/:tournamentId/participants' component={TournamentParticipantsPage} />
                         <PrivateRoute exact path='/test' component={Test} />
                         <AnonymousRoute exact path='/login' component={LoginPage} />
                         <AnonymousRoute exact path='/signup' component={SignUpPage} />

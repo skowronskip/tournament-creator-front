@@ -5,8 +5,10 @@ import {history} from '../helpers/history';
 
 export const tournamentActions = {
     createNewTournament,
-    getMyTournaments
-}
+    getMyTournaments,
+    getOneTournaments,
+    createParticipant
+};
 function createNewTournament(name: string, game: {value: number}) {
     return (dispatch: any) => {
         dispatch(request());
@@ -30,6 +32,28 @@ function createNewTournament(name: string, game: {value: number}) {
     function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_NEW_FAILURE, payload: error }; }
 }
 
+function createParticipant(name: string, tournament: number) {
+    return (dispatch: any) => {
+        dispatch(request());
+
+        tournamentService.createParticipant(name, tournament)
+            .then(
+                (response: any) => {
+                    dispatch(success(response));
+                    dispatch(alertActions.success('Team added!'));
+                },
+                (error: any) => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request() { return { type: tournamentConstants.TOURNAMENT_ADDPARTICIPANT_REQUEST }; }
+    function success(response: any) { return { type: tournamentConstants.TOURNAMENT_ADDPARTICIPANT_SUCCESS, payload: {participant: response }}; }
+    function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_ADDPARTICIPANT_FAILURE, payload: error }; }
+}
+
 function getMyTournaments() {
     return (dispatch: any) => {
         dispatch(request());
@@ -49,4 +73,25 @@ function getMyTournaments() {
     function request() { return { type: tournamentConstants.TOURNAMENT_GETALL_REQUEST }; }
     function success(response: any) { return { type: tournamentConstants.TOURNAMENT_GETALL_SUCCESS, payload: {tournaments: response }}; }
     function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_GETALL_FAILURE, payload: error }; }
+}
+
+function getOneTournaments(id: number) {
+    return (dispatch: any) => {
+        dispatch(request());
+
+        tournamentService.getOneTournament(id)
+            .then(
+                (response: any) => {
+                    dispatch(success(response));
+                },
+                (error: any) => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request() { return { type: tournamentConstants.TOURNAMENT_GETONE_REQUEST }; }
+    function success(response: any) { return { type: tournamentConstants.TOURNAMENT_GETONE_SUCCESS, payload: {tournament: response }}; }
+    function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_GETONE_FAILURE, payload: error }; }
 }

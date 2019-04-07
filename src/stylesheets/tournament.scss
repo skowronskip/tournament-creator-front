@@ -6,7 +6,7 @@
   width: 100%;
   max-width: 1000px;
   background-color: $main-background-2;
-  border-left: 3px $main-green solid;
+  border-left: 5px $main-green solid;
   border-radius: 5px;
   padding: 15px 30px;
   margin: 10px 0;
@@ -56,5 +56,25 @@
 
   svg {
     margin: 0 10px;
+  }
+}
+
+.tournament-menu {
+  width: 100%;
+  padding: 8px 0;
+  border-bottom: 1px #808080 solid;
+
+  a {
+    color: #cccccc;
+    font-size: 16px;
+    padding: 10px 25px;
+    box-sizing: border-box;
+  }
+
+  a:hover {
+    text-decoration: none;
+    background-color: $main-background-3;
+    color: #cccccc;
+    border-top: 3px $main-green solid;
   }
 }

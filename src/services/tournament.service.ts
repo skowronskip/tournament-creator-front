@@ -2,7 +2,9 @@ import { authHeader } from '../helpers/auth-header';
 
 export const tournamentService = {
     createTournament,
-    getMyTournaments
+    getMyTournaments,
+    getOneTournament,
+    createParticipant
 };
 
 function createTournament(name: string, game: {value: number}) {
@@ -20,6 +22,21 @@ function createTournament(name: string, game: {value: number}) {
         });
 }
 
+function createParticipant(name: string, tournament: number) {
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify({participant: {name, tournament_id: tournament}})
+    };
+
+    // @ts-ignore
+    return fetch(`http://localhost:4000/api/v1/participants`, requestOptions)
+        .then(handleResponse)
+        .then((response: any) => {
+            return response;
+        });
+}
+
 function getMyTournaments() {
     const requestOptions = {
         method: 'GET',
@@ -28,6 +45,20 @@ function getMyTournaments() {
 
     // @ts-ignore
     return fetch(`http://localhost:4000/api/v1/tournaments/myTournaments`, requestOptions)
+        .then(handleResponse)
+        .then((response: any) => {
+            return response;
+        });
+}
+
+function getOneTournament(id: number) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    // @ts-ignore
+    return fetch(`http://localhost:4000/api/v1/tournaments/tournament/${id}`, requestOptions)
         .then(handleResponse)
         .then((response: any) => {
             return response;
