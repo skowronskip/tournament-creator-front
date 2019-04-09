@@ -11,6 +11,7 @@ import {Link} from 'react-router-dom';
 import {tournamentStates} from '../../constants/tournament.constants';
 import TournamentMenu from '../../components/TournamentMenu';
 import Select from 'react-select';
+import TournamentHeader from '../../components/TournamentHeader';
 
 interface TournamentParticipantsPageProps {
     dispatch: any;
@@ -44,7 +45,6 @@ class TournamentParticipantsPage extends Component<TournamentParticipantsPagePro
         this.setState({ [name]: value });
     }
 
-
     public handleSubmit(e: any) {
         e.preventDefault();
 
@@ -59,15 +59,6 @@ class TournamentParticipantsPage extends Component<TournamentParticipantsPagePro
                 submitted: false
             });
         }
-    }
-
-    public renderHeader() {
-        const {currentTournament, games} = this.props;
-        const game = currentTournament ? _.find(games, (game) => game.id === currentTournament.game_id) : null;
-        if (currentTournament && game) {
-            return <h1>{currentTournament.name}</h1>;
-        }
-        return '';
     }
 
     public renderMenu() {
@@ -89,28 +80,28 @@ class TournamentParticipantsPage extends Component<TournamentParticipantsPagePro
     }
     public render() {
         const {name, submitted} = this.state;
+        const {currentTournament} = this.props;
         return (
             <Container fluid={true} className='dashboard'>
                 <DashboardMenu/>
                 <Container fluid={true}>
                     <Row className='dashboard-page'>
                         <Col xs='12'>
-                            {this.renderHeader()}
+                            <TournamentHeader dispatch={this.props.dispatch} currentTournament={this.props.currentTournament}/>
                             {this.renderMenu()}
                         </Col>
                     </Row>
                     <Row className='dashboard-content'>
                         <Col xs='12'>
-                            <div className={'form-group' + (submitted && !name ? ' has-error' : '')}>
+                            {currentTournament && currentTournament.state === tournamentStates.STOPPED && <div><div className={'form-group' + (submitted && !name ? ' has-error' : '')}>
                                 <label htmlFor='name'>Team name</label>
                                 <input type='name' className='form-control' name='name' value={name} onChange={this.handleChange} />
                                 {submitted && !name &&
                                 <div className='help-block'>Name is required</div>
                                 }
-                            </div>
-                            <div className='form-group'>
+                            </div><div className='form-group'>
                                 <button className='button-secondary' onClick={this.handleSubmit}>Login</button>
-                            </div>
+                            </div></div>}
                         </Col>
                     </Row>
                     <Row className='dashboard-content'>

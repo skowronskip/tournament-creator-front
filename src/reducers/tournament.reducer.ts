@@ -51,6 +51,11 @@ export function tournament(state = initialState, action: TournamentAction) {
                 ...state,
                 currentTournament: action.payload.tournament
             };
+        case tournamentConstants.TOURNAMENT_CHANGESTATE_SUCCESS:
+            return {
+                ...state,
+                currentTournament: action.payload.tournament
+            };
         case tournamentConstants.TOURNAMENT_ADDPARTICIPANT_SUCCESS:
             const updatedState = {...state};
             const {currentTournament} = updatedState;

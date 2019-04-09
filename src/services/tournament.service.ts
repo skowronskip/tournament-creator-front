@@ -4,7 +4,8 @@ export const tournamentService = {
     createTournament,
     getMyTournaments,
     getOneTournament,
-    createParticipant
+    createParticipant,
+    changeTournamentState
 };
 
 function createTournament(name: string, game: {value: number}) {
@@ -16,6 +17,21 @@ function createTournament(name: string, game: {value: number}) {
 
     // @ts-ignore
     return fetch(`http://localhost:4000/api/v1/tournaments`, requestOptions)
+        .then(handleResponse)
+        .then((response: any) => {
+            return response;
+        });
+}
+
+function changeTournamentState(state: string, id: number) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader(),
+        body: JSON.stringify({tournament: {state}})
+    };
+
+    // @ts-ignore
+    return fetch(`http://localhost:4000/api/v1/tournaments/${id}`, requestOptions)
         .then(handleResponse)
         .then((response: any) => {
             return response;

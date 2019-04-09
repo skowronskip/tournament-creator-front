@@ -10,6 +10,7 @@ import {tournamentActions} from '../../actions/tournament.actions';
 import {Link} from 'react-router-dom';
 import {tournamentStates} from '../../constants/tournament.constants';
 import TournamentMenu from '../../components/TournamentMenu';
+import TournamentHeader from '../../components/TournamentHeader';
 
 interface TournamentMatchesPageProps {
     dispatch: any;
@@ -23,15 +24,6 @@ class TournamentMatchesPage extends Component<TournamentMatchesPageProps> {
     constructor(props: TournamentMatchesPageProps) {
         super(props);
         this.props.dispatch(tournamentActions.getOneTournaments(parseInt(this.props.match.params.tournamentId, 10)));
-    }
-
-    public renderHeader() {
-        const {currentTournament, games} = this.props;
-        const game = currentTournament ? _.find(games, (game) => game.id === currentTournament.game_id) : null;
-        if (currentTournament && game) {
-            return <h1>{currentTournament.name}</h1>;
-        }
-        return '';
     }
 
     public renderMenu() {
@@ -58,7 +50,7 @@ class TournamentMatchesPage extends Component<TournamentMatchesPageProps> {
                 <Container fluid={true}>
                     <Row className='dashboard-page'>
                         <Col xs='12'>
-                            {this.renderHeader()}
+                            <TournamentHeader dispatch={this.props.dispatch} currentTournament={this.props.currentTournament}/>
                             {this.renderMenu()}
                         </Col>
                     </Row>

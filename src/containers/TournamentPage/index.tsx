@@ -10,6 +10,10 @@ import {tournamentActions} from '../../actions/tournament.actions';
 import {Link} from 'react-router-dom';
 import {tournamentStates} from '../../constants/tournament.constants';
 import TournamentMenu from '../../components/TournamentMenu';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPlayCircle} from '@fortawesome/free-solid-svg-icons/faPlayCircle';
+import {faPauseCircle} from '@fortawesome/free-solid-svg-icons/faPauseCircle';
+import TournamentHeader from '../../components/TournamentHeader';
 
 interface TournamentPageProps {
     dispatch: any;
@@ -23,15 +27,6 @@ class TournamentPage extends Component<TournamentPageProps> {
     constructor(props: TournamentPageProps) {
         super(props);
         this.props.dispatch(tournamentActions.getOneTournaments(parseInt(this.props.match.params.tournamentId, 10)));
-    }
-
-    public renderHeader() {
-        const {currentTournament, games} = this.props;
-        const game = currentTournament ? _.find(games, (game) => game.id === currentTournament.game_id) : null;
-        if (currentTournament && game) {
-            return <h1>{currentTournament.name}</h1>;
-        }
-        return '';
     }
 
     public renderMenu() {
@@ -58,7 +53,7 @@ class TournamentPage extends Component<TournamentPageProps> {
                 <Container fluid={true}>
                     <Row className='dashboard-page'>
                         <Col xs='12'>
-                            {this.renderHeader()}
+                            <TournamentHeader dispatch={this.props.dispatch} currentTournament={this.props.currentTournament}/>
                             {this.renderMenu()}
                         </Col>
                     </Row>
