@@ -225,4 +225,77 @@
     color: #cccccc;
     border-bottom: 3px #136576 solid; }
 
+.tournament-participants {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px; }
+  .tournament-participants .team, .tournament-participants .tournament-matches .team-left, .tournament-matches .tournament-participants .team-left, .tournament-participants .tournament-matches .team-right, .tournament-matches .tournament-participants .team-right {
+    background-color: #404040;
+    border-radius: 5px;
+    margin: 5px 0;
+    font-size: 15px; }
+  .tournament-participants .index {
+    display: inline-block;
+    background-color: #136576;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px; }
+  .tournament-participants .name {
+    text-align: center;
+    line-height: 30px;
+    padding: 0 10px; }
+
+.tournament-matches {
+  display: block;
+  width: 100%; }
+  .tournament-matches .match {
+    display: inline-block;
+    width: calc(100% - 150px);
+    margin: 0; }
+  .tournament-matches .round-no {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold; }
+  .tournament-matches .match-bar {
+    background-color: #404040;
+    border-radius: 5px;
+    text-align: center;
+    height: 40px;
+    margin: 10px 0; }
+  .tournament-matches .match-no, .tournament-matches .score, .tournament-matches .edit {
+    background-color: #136576;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    border-radius: 5px; }
+  .tournament-matches .team, .tournament-matches .team-left, .tournament-matches .team-right {
+    display: inline-block;
+    width: calc(50% - 50px);
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 5px; }
+  .tournament-matches .team-left {
+    text-align: right; }
+  .tournament-matches .team-right {
+    text-align: left; }
+  .tournament-matches .score {
+    width: 80px;
+    background-color: #303030;
+    margin: 0 10px; }
+  .tournament-matches .spacer {
+    padding: 0 5px; }
+  .tournament-matches .edit {
+    background-color: #303030;
+    font-size: 14px; }
+  .tournament-matches .edit:hover {
+    background-color: #136576;
+    cursor: pointer; }
+
 /*# sourceMappingURL=App.css.map */

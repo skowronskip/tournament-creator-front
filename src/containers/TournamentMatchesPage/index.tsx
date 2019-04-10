@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import {Col, Container, Row} from 'reactstrap';
 import '../../App.scss';
-import { DashboardMenu } from '../../components/DashboardMenu/index';
+import {DashboardMenu} from '../../components/DashboardMenu/index';
 import {Tournament} from '../../reducers/tournament.reducer';
 import {connect} from 'react-redux';
 import {Game} from '../../reducers/loader.reducer';
-import _ from 'lodash';
 import {tournamentActions} from '../../actions/tournament.actions';
-import {Link} from 'react-router-dom';
 import {tournamentStates} from '../../constants/tournament.constants';
 import TournamentMenu from '../../components/TournamentMenu';
 import TournamentHeader from '../../components/TournamentHeader';
+import {TournamentMatches} from '../../components/TournamentMatches';
 
 interface TournamentMatchesPageProps {
     dispatch: any;
@@ -42,26 +41,29 @@ class TournamentMatchesPage extends Component<TournamentMatchesPageProps> {
         return '';
     }
 
-
     public render() {
-        return (
-            <Container fluid={true} className='dashboard'>
-                <DashboardMenu/>
-                <Container fluid={true}>
-                    <Row className='dashboard-page'>
-                        <Col xs='12'>
-                            <TournamentHeader dispatch={this.props.dispatch} currentTournament={this.props.currentTournament}/>
-                            {this.renderMenu()}
-                        </Col>
-                    </Row>
-                    <Row className='dashboard-content'>
-                        <Col xs='12'>
-                            {this.renderTable()}
-                        </Col>
-                    </Row>
+        if (this.props.currentTournament) {
+            return (
+                <Container fluid={true} className='dashboard'>
+                    <DashboardMenu/>
+                    <Container fluid={true}>
+                        <Row className='dashboard-page'>
+                            <Col xs='12'>
+                                <TournamentHeader dispatch={this.props.dispatch} currentTournament={this.props.currentTournament}/>
+                                {this.renderMenu()}
+                            </Col>
+                        </Row>
+                        <Row className='dashboard-content'>
+                            <Col xs='12'>
+                                {this.renderTable()}
+                                {this.props.currentTournament && <TournamentMatches key={this.props.currentTournament.id}/>}
+                            </Col>
+                        </Row>
+                    </Container>
                 </Container>
-            </Container>
-        );
+            );
+        }
+        return '';
     }
 }
 

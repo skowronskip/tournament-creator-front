@@ -72,8 +72,12 @@ class TournamentParticipantsPage extends Component<TournamentParticipantsPagePro
     public renderParticipants() {
         const {currentTournament} = this.props;
         if (currentTournament) {
-            return _.map(currentTournament.participants, (participant) => {
-                return <p>{participant.id} {participant.name}</p>;
+            return _.map(currentTournament.participants, (participant, index) => {
+                return (
+                    <div key={index} className='team'>
+                        <span className='index'>{index + 1}</span> <span className='name'>{participant.name}</span>
+                    </div>
+                );
             });
         }
         return '';
@@ -106,7 +110,9 @@ class TournamentParticipantsPage extends Component<TournamentParticipantsPagePro
                     </Row>
                     <Row className='dashboard-content'>
                         <Col xs='12'>
-                            {this.renderParticipants()}
+                            <div className='tournament-participants'>
+                                {this.renderParticipants()}
+                            </div>
                         </Col>
                     </Row>
                 </Container>

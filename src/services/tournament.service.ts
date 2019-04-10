@@ -5,7 +5,10 @@ export const tournamentService = {
     getMyTournaments,
     getOneTournament,
     createParticipant,
-    changeTournamentState
+    changeTournamentState,
+    generateTournamentMatches,
+    getTournamentStatistics,
+    changeMatchScore
 };
 
 function createTournament(name: string, game: {value: number}) {
@@ -23,6 +26,21 @@ function createTournament(name: string, game: {value: number}) {
         });
 }
 
+function generateTournamentMatches(id: number) {
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify({tournament_id: id})
+    };
+
+    // @ts-ignore
+    return fetch(`http://localhost:4000/api/v1/matches/generate`, requestOptions)
+        .then(handleResponse)
+        .then((response: any) => {
+            return response;
+        });
+}
+
 function changeTournamentState(state: string, id: number) {
     const requestOptions = {
         method: 'PUT',
@@ -32,6 +50,21 @@ function changeTournamentState(state: string, id: number) {
 
     // @ts-ignore
     return fetch(`http://localhost:4000/api/v1/tournaments/${id}`, requestOptions)
+        .then(handleResponse)
+        .then((response: any) => {
+            return response;
+        });
+}
+
+function changeMatchScore(homePoints: number, awayPoints: number, id: number) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader(),
+        body: JSON.stringify({match: {homePoints, awayPoints}})
+    };
+
+    // @ts-ignore
+    return fetch(`http://localhost:4000/api/v1/matches/${id}`, requestOptions)
         .then(handleResponse)
         .then((response: any) => {
             return response;
@@ -75,6 +108,20 @@ function getOneTournament(id: number) {
 
     // @ts-ignore
     return fetch(`http://localhost:4000/api/v1/tournaments/tournament/${id}`, requestOptions)
+        .then(handleResponse)
+        .then((response: any) => {
+            return response;
+        });
+}
+
+function getTournamentStatistics(id: number) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    // @ts-ignore
+    return fetch(`http://localhost:4000/api/v1/tournaments/statistics/${id}`, requestOptions)
         .then(handleResponse)
         .then((response: any) => {
             return response;

@@ -8,7 +8,9 @@ export const tournamentActions = {
     getMyTournaments,
     getOneTournaments,
     createParticipant,
-    changeTournamentState
+    changeTournamentState,
+    generateTournamentMatches,
+    changeMatchScore
 };
 function createNewTournament(name: string, game: {value: number}) {
     return (dispatch: any) => {
@@ -56,6 +58,27 @@ function createParticipant(name: string, tournament: number) {
     function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_ADDPARTICIPANT_FAILURE, payload: error }; }
 }
 
+function generateTournamentMatches(id: number) {
+    return (dispatch: any) => {
+        dispatch(request());
+
+        tournamentService.generateTournamentMatches(id)
+            .then(
+                (response: any) => {
+                    dispatch(success(response));
+                },
+                (error: any) => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request() { return { type: tournamentConstants.TOURNAMENT_GENERATEMATCHES_REQUEST }; }
+    function success(response: any) { return { type: tournamentConstants.TOURNAMENT_GENERATEMATCHES_SUCCESS, payload: {matches: response }}; }
+    function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_GENERATEMATCHES_FAILURE, payload: error }; }
+}
+
 function getMyTournaments() {
     return (dispatch: any) => {
         dispatch(request());
@@ -95,7 +118,28 @@ function changeTournamentState(state: string, id: number) {
 
     function request() { return { type: tournamentConstants.TOURNAMENT_CHANGESTATE_REQUEST }; }
     function success(response: any) { return { type: tournamentConstants.TOURNAMENT_CHANGESTATE_SUCCESS, payload: {tournament: response }}; }
-    function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_ADDPARTICIPANT_FAILURE, payload: error }; }
+    function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_CHANGESTATE_FAILURE, payload: error }; }
+}
+
+function changeMatchScore(homePoints: number, awayPoints: number, id: number) {
+    return (dispatch: any) => {
+        dispatch(request());
+
+        tournamentService.changeMatchScore(homePoints, awayPoints, id)
+            .then(
+                (response: any) => {
+                    dispatch(success(response));
+                },
+                (error: any) => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request() { return { type: tournamentConstants.TOURNAMENT_CHANGESCORE_REQUEST }; }
+    function success(response: any) { return { type: tournamentConstants.TOURNAMENT_CHANGESCORE_SUCCESS, payload: {match: response }}; }
+    function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_CHANGESCORE_FAILURE, payload: error }; }
 }
 
 function getOneTournaments(id: number) {

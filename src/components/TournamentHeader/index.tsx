@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
-import {Col, Container, Row} from 'reactstrap';
 import '../../App.scss';
-import { DashboardMenu } from '../../components/DashboardMenu/index';
 import {Tournament} from '../../reducers/tournament.reducer';
-import {connect} from 'react-redux';
-import {Game} from '../../reducers/loader.reducer';
-import _ from 'lodash';
 import {tournamentActions} from '../../actions/tournament.actions';
 import {tournamentStates} from '../../constants/tournament.constants';
-import TournamentMenu from '../../components/TournamentMenu';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons/faPlayCircle';
 import {faPauseCircle} from '@fortawesome/free-solid-svg-icons/faPauseCircle';
@@ -27,6 +21,9 @@ export class TournamentHeader extends Component<TournamentHeaderProps> {
     public startTournament() {
         const {dispatch, currentTournament} = this.props;
         if (currentTournament) {
+            if (currentTournament.state === tournamentStates.STOPPED) {
+                dispatch(tournamentActions.generateTournamentMatches(currentTournament.id));
+            }
             dispatch(tournamentActions.changeTournamentState(tournamentStates.IN_PROGRESS, currentTournament.id));
         }
     }

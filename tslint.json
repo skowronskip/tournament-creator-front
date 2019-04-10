@@ -13,6 +13,7 @@
     "no-shadowed-variable": false,
     "jsx-alignment": false,
     "jsx-no-lambda": false,
-    "object-literal-key-quotes": false
+    "object-literal-key-quotes": false,
+    "no-trailing-whitespace": false
   }
 }

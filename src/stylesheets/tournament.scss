@@ -78,3 +78,105 @@
     border-bottom: 3px $main-green solid;
   }
 }
+
+.tournament-participants {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+
+  .team {
+    background-color: $main-background-3;
+    border-radius: 5px;
+    margin: 5px 0;
+    font-size: 15px;
+  }
+
+  .index {
+    display: inline-block;
+    background-color: $main-green;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+  }
+  .name {
+    text-align: center;
+    line-height: 30px;
+    padding: 0 10px;
+  }
+}
+
+.tournament-matches {
+  display: block;
+  width: 100%;
+  .match {
+    display: inline-block;
+    width: calc(100% - 150px);
+    margin: 0;
+  }
+  .round-no {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .match-bar {
+    background-color: $main-background-3;
+    border-radius: 5px;
+    text-align: center;
+    height: 40px;
+    margin: 10px 0;
+  }
+
+  .match-no {
+    background-color: $main-green;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+
+  .team {
+    display: inline-block;
+    width: calc(50% - 50px);
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 5px;
+  }
+
+  .team-left {
+    @extend .team;
+    text-align: right;
+  }
+
+  .team-right {
+    @extend .team;
+    text-align: left;
+  }
+
+  .score {
+    @extend .match-no;
+    width: 80px;
+    background-color: $main-background-2;
+    margin: 0 10px;
+  }
+  .spacer {
+    padding: 0 5px;
+  }
+  .edit {
+    @extend .match-no;
+    background-color: $main-background-2;
+    font-size: 14px;
+  }
+
+  .edit:hover {
+    background-color: $main-green;
+    cursor: pointer;
+  }
+}
