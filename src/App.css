@@ -16,6 +16,9 @@
     margin-top: -25px;
     margin-left: -25px; }
 
+.bg-main-green {
+  background-color: #136576; }
+
 .landing-bg {
   background-image: url("./assets/bg.png");
   background-size: auto;
@@ -297,5 +300,77 @@
   .tournament-matches .edit:hover {
     background-color: #136576;
     cursor: pointer; }
+
+.tournament-table {
+  display: block;
+  width: 100%;
+  max-width: 800px; }
+  .tournament-table .team-bar, .tournament-table .header-bar {
+    background-color: #404040;
+    border-radius: 5px;
+    text-align: center;
+    height: 30px;
+    margin: 10px 0; }
+  .tournament-table .header-bar {
+    background-color: #136576; }
+  .tournament-table .empty-statistic {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px; }
+  .tournament-table .place, .tournament-table .statistic {
+    background-color: #136576;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+    border-radius: 5px; }
+  .tournament-table .name {
+    text-align: left;
+    display: inline-block;
+    width: calc(100% - 300px);
+    margin: 0;
+    line-height: 30px;
+    font-size: 15px; }
+  .tournament-table .statistic {
+    background-color: #303030;
+    font-size: 14px; }
+
+.tournament-header-bar {
+  width: 150px !important;
+  height: 10px !important;
+  background-color: #404040 !important;
+  border-radius: 0 !important; }
+  .tournament-header-bar .progress-bar {
+    background-color: #136576; }
+
+.tournament-header {
+  vertical-align: middle; }
+
+.tournament-header span {
+  font-size: 36px; }
+
+.tournament-header-progress {
+  display: inline-block;
+  float: right;
+  vertical-align: middle; }
+
+.tournament-bar-progress {
+  width: 100px !important;
+  height: 5px !important;
+  background-color: #404040 !important;
+  border-radius: 0 !important; }
+  .tournament-bar-progress .progress-bar {
+    background-color: #136576; }
+
+.custom-inputs input, .custom-inputs input:focus {
+  background-color: #404040;
+  color: #cccccc;
+  border: 1px #808080 solid;
+  border-radius: 20px; }
 
 /*# sourceMappingURL=App.css.map */

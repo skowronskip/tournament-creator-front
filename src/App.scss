@@ -3,7 +3,6 @@ $main-background-2: #303030;
 $main-background-3: #404040;
 $main-green: #136576;
 
-
 .app-settings {
   background-color: $main-background;
   color: white;
@@ -26,6 +25,10 @@ $main-green: #136576;
   }
 }
 
+.bg-main-green {
+  background-color: $main-green;
+}
+
 
 @import 'stylesheets/landing';
 @import 'stylesheets/landing-menu';
@@ -33,3 +36,4 @@ $main-green: #136576;
 @import 'stylesheets/login';
 @import 'stylesheets/dashboard';
 @import 'stylesheets/tournament';
+@import 'stylesheets/form';

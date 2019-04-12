@@ -9,6 +9,7 @@ interface TournamentAction {
         participant: Participant;
         matches: Match[];
         match: Match;
+        statistics: StatisticRecord[];
     };
 }
 export interface Match {
@@ -35,6 +36,7 @@ export interface Tournament {
     updated_at: string;
     participants: Participant[];
     matches: Match[];
+    statistics: StatisticRecord[];
     state: string;
     type: number;
 }
@@ -42,6 +44,21 @@ export interface Tournament {
 interface TournamentState {
     tournaments: Tournament[];
     currentTournament: Tournament | null;
+}
+
+export interface StatisticRecord {
+    ex_aequo_place: number;
+    goals_conceed: number;
+    goals_difference: number;
+    goals_scored: number;
+    id: number;
+    match_lost: number;
+    match_played: number;
+    match_tied: number;
+    match_won: number;
+    name: string;
+    place: number;
+    points: number;
 }
 
 const initialState: TournamentState = {
@@ -96,6 +113,11 @@ export function tournament(state = initialState, action: TournamentAction) {
                 ...state,
                 currentTournament
             };
+        case tournamentConstants.TOURNAMENT_GETSTATISTICS_SUCCESS:
+            if (currentTournament) {
+                currentTournament.statistics = action.payload.statistics;
+            }
+            return updatedState;
         default:
             return state;
     }

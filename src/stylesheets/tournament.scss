@@ -180,3 +180,93 @@
     cursor: pointer;
   }
 }
+
+.tournament-table {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+
+  .team-bar {
+    background-color: $main-background-3;
+    border-radius: 5px;
+    text-align: center;
+    height: 30px;
+    margin: 10px 0;
+  }
+
+  .header-bar {
+    @extend .team-bar;
+    background-color: $main-green;
+  }
+
+  .empty-statistic {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+  }
+
+  .place {
+    background-color: $main-green;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+  }
+
+  .name {
+    text-align: left;
+    display: inline-block;
+    width: calc(100% - 300px);
+    margin: 0;
+    line-height: 30px;
+    font-size: 15px;
+  }
+
+  .statistic {
+    @extend .place;
+    background-color: $main-background-2;
+    font-size: 14px;
+  }
+}
+
+.tournament-header-bar {
+  width: 150px !important;
+  height: 10px !important;
+  background-color: $main-background-3 !important;
+  border-radius: 0 !important;
+
+  .progress-bar {
+    background-color: $main-green;
+  }
+}
+
+.tournament-header {
+  vertical-align: middle;
+}
+
+.tournament-header span {
+  font-size: 36px;
+}
+
+.tournament-header-progress {
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+}
+
+.tournament-bar-progress {
+  width: 100px !important;
+  height: 5px !important;
+  background-color: $main-background-3 !important;
+  border-radius: 0 !important;
+
+  .progress-bar {
+    background-color: $main-green;
+  }
+}

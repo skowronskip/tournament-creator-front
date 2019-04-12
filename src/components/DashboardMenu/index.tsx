@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import {User} from '../../helpers/current-user';
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCog, faCamera, faKey, faPlus, faTimes, faPenFancy} from '@fortawesome/free-solid-svg-icons';
+import {faCog, faCamera, faKey, faPlus, faTimes, faPenFancy, faTrophy} from '@fortawesome/free-solid-svg-icons';
 import {tournament, Tournament} from '../../reducers/tournament.reducer';
 
 interface DashboardMenuProps {
@@ -47,10 +47,8 @@ class DashboardMenu extends Component<DashboardMenuProps, DashboardMenuState> {
                 <div className='section'>
                     <p>TOURNAMENT</p>
                     <Link to='/dashboard/newTournament'><FontAwesomeIcon icon={faPlus} /> New Tournament</Link>
-                    <Link to='#'><FontAwesomeIcon icon={faPenFancy} /> Edit Tournament</Link>
-                    <Link to='#'><FontAwesomeIcon icon={faTimes} /> Delete Tournament</Link>
                     {this.props.tournaments.map((tournament, index) => {
-                        return <p key={index}>{tournament.name}</p>
+                        return <Link key={index} to={`/dashboard/tournament/${tournament.id}`}><FontAwesomeIcon icon={faTrophy}/>{tournament.name}</Link>;
                     })}
                 </div>
             </div>

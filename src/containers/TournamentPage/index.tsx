@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import {Col, Container, Row} from 'reactstrap';
 import '../../App.scss';
-import { DashboardMenu } from '../../components/DashboardMenu/index';
+import {DashboardMenu} from '../../components/DashboardMenu/index';
 import {Tournament} from '../../reducers/tournament.reducer';
 import {connect} from 'react-redux';
 import {Game} from '../../reducers/loader.reducer';
-import _ from 'lodash';
 import {tournamentActions} from '../../actions/tournament.actions';
-import {Link} from 'react-router-dom';
 import {tournamentStates} from '../../constants/tournament.constants';
 import TournamentMenu from '../../components/TournamentMenu';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPlayCircle} from '@fortawesome/free-solid-svg-icons/faPlayCircle';
-import {faPauseCircle} from '@fortawesome/free-solid-svg-icons/faPauseCircle';
 import TournamentHeader from '../../components/TournamentHeader';
+import Table from '../../components/Table';
 
 interface TournamentPageProps {
     dispatch: any;
@@ -27,6 +23,13 @@ class TournamentPage extends Component<TournamentPageProps> {
     constructor(props: TournamentPageProps) {
         super(props);
         this.props.dispatch(tournamentActions.getOneTournaments(parseInt(this.props.match.params.tournamentId, 10)));
+        this.props.dispatch(tournamentActions.getTournamentStatistics(parseInt(this.props.match.params.tournamentId, 10)));
+    }
+    componentWillReceiveProps(nextProps: Readonly<TournamentPageProps>, nextContext: any): void {
+        if (this.props.match.params.tournamentId !== nextProps.match.params.tournamentId) {
+            this.props.dispatch(tournamentActions.getOneTournaments(parseInt(nextProps.match.params.tournamentId, 10)));
+            this.props.dispatch(tournamentActions.getTournamentStatistics(parseInt(nextProps.match.params.tournamentId, 10)));
+        }
     }
 
     public renderMenu() {
@@ -59,7 +62,7 @@ class TournamentPage extends Component<TournamentPageProps> {
                     </Row>
                     <Row className='dashboard-content'>
                         <Col xs='12'>
-                            {this.renderTable()}
+                            {this.props.currentTournament && <Table statistics={this.props.currentTournament.statistics}/>}
                         </Col>
                     </Row>
                 </Container>

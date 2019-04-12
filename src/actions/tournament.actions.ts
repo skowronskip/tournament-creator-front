@@ -10,7 +10,8 @@ export const tournamentActions = {
     createParticipant,
     changeTournamentState,
     generateTournamentMatches,
-    changeMatchScore
+    changeMatchScore,
+    getTournamentStatistics
 };
 function createNewTournament(name: string, game: {value: number}) {
     return (dispatch: any) => {
@@ -98,6 +99,27 @@ function getMyTournaments() {
     function request() { return { type: tournamentConstants.TOURNAMENT_GETALL_REQUEST }; }
     function success(response: any) { return { type: tournamentConstants.TOURNAMENT_GETALL_SUCCESS, payload: {tournaments: response }}; }
     function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_GETALL_FAILURE, payload: error }; }
+}
+
+function getTournamentStatistics(id: number) {
+    return (dispatch: any) => {
+        dispatch(request());
+
+        tournamentService.getTournamentStatistics(id)
+            .then(
+                (response: any) => {
+                    dispatch(success(response));
+                },
+                (error: any) => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request() { return { type: tournamentConstants.TOURNAMENT_GETSTATISTICS_REQUEST }; }
+    function success(response: any) { return { type: tournamentConstants.TOURNAMENT_GETSTATISTICS_SUCCESS, payload: {statistics: response }}; }
+    function failure(error: any) { return { type: tournamentConstants.TOURNAMENT_GETSTATISTICS_FAILURE, payload: error }; }
 }
 
 function changeTournamentState(state: string, id: number) {

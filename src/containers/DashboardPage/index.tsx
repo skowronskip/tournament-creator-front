@@ -19,6 +19,11 @@ interface DashboardPageProps {
 }
 
 class DashboardPage extends Component<DashboardPageProps> {
+    constructor(props: DashboardPageProps) {
+        super(props);
+        this.props.dispatch(tournamentActions.getMyTournaments());
+    }
+
     public renderTournaments() {
         if (this.props.tournaments) {
             return this.props.tournaments.map((tournament) => {

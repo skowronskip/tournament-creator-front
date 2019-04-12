@@ -56,13 +56,39 @@ class NewTournamentPage extends Component<NewTournamentPageProps, NewTournamentP
 
     public render() {
         const {name, game, submitted} = this.state;
+        const customStyles = {
+            option: (provided: any, state: any) => ({
+                ...provided,
+                borderBottom: '1px dotted pink',
+                color: state.isSelected ? 'red' : 'blue',
+                padding: 20,
+            }),
+            valueContainer: (provided: any, state: any) => {
+                return (
+                    {
+                        ...provided,
+                        backgroundColor: '#404040',
+                        borderColor: '#808080',
+                        borderRadius: 20
+                    }
+                );
+            },
+            singleValue: (provided: any, state: any) => {
+                const opacity = state.isSelected ? 0.5 : 1;
+                const transition = 'opacity 300ms';
+
+                return { ...provided, opacity, transition };
+            }
+        }
+
         return (
             <Container fluid={true} className='dashboard'>
                 <DashboardMenu/>
                 <Container fluid={true}>
-                    <Row>
+                    <Row className='dashboard-page'>
                         <Col xs='12'>
-                            <div className={'form-group' + (submitted && !name ? ' has-error' : '')}>
+                            <h1>CREATE NEW TOURNAMENT</h1>
+                            <div className={'form-group custom-inputs' + (submitted && !name ? ' has-error' : '')}>
                                 <label htmlFor='name'>Tournament name</label>
                                 <input type='name' className='form-control' name='name' value={name} onChange={this.handleChange} />
                                 {submitted && !name &&
@@ -71,7 +97,7 @@ class NewTournamentPage extends Component<NewTournamentPageProps, NewTournamentP
                             </div>
                             <div className={'form-group' + (submitted && !name ? ' has-error' : '')}>
                                 <label htmlFor='name'>Game</label>
-                                <Select value={game} onChange={this.handleChangeSelect} options={this.props.games}/>
+                                <Select value={game} styles={customStyles} onChange={this.handleChangeSelect} options={this.props.games}/>
                                 {submitted && !name &&
                                 <div className='help-block'>Name is required</div>
                                 }

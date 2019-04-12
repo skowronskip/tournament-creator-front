@@ -1,4 +1,5 @@
 import { authHeader } from '../helpers/auth-header';
+import {matchStates} from '../constants/tournament.constants';
 
 export const tournamentService = {
     createTournament,
@@ -60,7 +61,7 @@ function changeMatchScore(homePoints: number, awayPoints: number, id: number) {
     const requestOptions = {
         method: 'PUT',
         headers: authHeader(),
-        body: JSON.stringify({match: {homePoints, awayPoints}})
+        body: JSON.stringify({match: {homePoints, awayPoints, state: matchStates.RESOLVED}})
     };
 
     // @ts-ignore
