@@ -6,3 +6,51 @@
     border-radius: 20px;
   }
 }
+
+.score-inputs {
+  input, input:focus {
+    text-align: center;
+    display: inline-block;
+    background-color: $main-background;
+    color: #cccccc;
+    border: 1px #808080 solid;
+    border-radius: 20px;
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+  }
+
+  label {
+    font-size: 24px;
+  }
+}
+
+.form-select-container {
+  .form-select__control {
+    background-color: $main-background-3;
+    color: #cccccc;
+    border: 1px #808080 solid;
+    border-radius: 20px;
+  }
+
+  .form-select__single-value {
+    color: #cccccc;
+  }
+  .form-select__menu {
+    background-color: $main-background-3;
+    color: #cccccc;
+    border: 1px #808080 solid;
+  }
+
+  .form-select__option {
+    color: #cccccc;
+  }
+
+  .form-select__option--is-focused, .form-select__option:hover {
+    background-color: $main-background-2;
+  }
+
+  .form-select__option--is-selected {
+    background-color: $main-green;
+  }
+}

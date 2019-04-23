@@ -95,7 +95,7 @@ class TournamentParticipantsPage extends Component<TournamentParticipantsPagePro
                             {this.renderMenu()}
                         </Col>
                     </Row>
-                    <Row className='dashboard-content'>
+                    <Row className='dashboard-content custom-inputs'>
                         <Col xs='12'>
                             {currentTournament && currentTournament.state === tournamentStates.STOPPED && <div><div className={'form-group' + (submitted && !name ? ' has-error' : '')}>
                                 <label htmlFor='name'>Team name</label>

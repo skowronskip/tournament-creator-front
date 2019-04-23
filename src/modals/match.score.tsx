@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Match, Participant} from '../reducers/tournament.reducer';
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import {Button, Col, Container, Modal, ModalBody, ModalFooter, ModalHeader, Row} from 'reactstrap';
 import {userActions} from '../actions/user.actions';
 import {tournamentActions} from '../actions/tournament.actions';
 import _ from 'lodash';
@@ -57,32 +57,46 @@ class MatchScore extends Component<MatchScoreProps, MatchScoreState> {
         const {homePoints, awayPoints, submitted} = this.state;
         return (
             <div>
-                <Modal isOpen={isOpen} toggle={toggle}>
-                    <ModalHeader toggle={toggle}>{homeTeam ? homeTeam.name : 'error'} vs {awayTeam ? awayTeam.name : 'error'}</ModalHeader>
-                    <ModalBody>
-                        <form className='mt-5' name='form' onSubmit={this.handleSubmit}>
-                            <div className={'form-group' + (submitted && !homePoints ? ' has-error' : '')}>
-                                <label htmlFor='homePoints'>{homeTeam ? homeTeam.name : 'error'} score</label>
-                                <input type='number' className='form-control' name='homePoints' value={homePoints} onChange={this.handleChange} />
-                                {submitted && !homePoints &&
-                                <div className='help-block'>Score is required</div>
-                                }
-                            </div>
-                            <div className={'form-group' + (submitted && !awayPoints ? ' has-error' : '')}>
-                                <label htmlFor='awayPoints'>{awayTeam ? awayTeam.name : 'error'} score</label>
-                                <input type='number' className='form-control' name='awayPoints' value={awayPoints} onChange={this.handleChange} />
-                                {submitted && !awayPoints &&
-                                <div className='help-block'>Score is required</div>
-                                }
-                            </div>
-                            <div className='form-group'>
-                                <button className='button-secondary'>Login</button>
-                            </div>
-                        </form>
+                <Modal size='lg' isOpen={isOpen} toggle={toggle}>
+                    <form className='mt-5 score-inputs text-center' name='form' onSubmit={this.handleSubmit}>
+                    <ModalBody toggle={toggle}>
+                        <Container>
+                            <Row>
+                                <Col xs='6'>
+                                    <div>
+                                        <label htmlFor='homePoints'>{homeTeam ? homeTeam.name : 'error'}</label>
+                                    </div>
+                                </Col>
+                                <Col xs='6'>
+                                    <div>
+                                        <label htmlFor='awayPoints'>{awayTeam ? awayTeam.name : 'error'}</label>
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs='6'>
+                                    <div className={'form-group' + (submitted && !homePoints ? ' has-error' : '')}>
+                                        <input type='number' className='form-control' name='homePoints' value={homePoints} onChange={this.handleChange} />
+                                        {submitted && !homePoints &&
+                                        <div className='help-block'>Score is required</div>
+                                        }
+                                    </div>
+                                </Col>
+                                <Col xs='6'>
+                                    <div className={'form-group' + (submitted && !awayPoints ? ' has-error' : '')}>
+                                        <input type='number' className='form-control' name='awayPoints' value={awayPoints} onChange={this.handleChange} />
+                                        {submitted && !awayPoints &&
+                                        <div className='help-block'>Score is required</div>
+                                        }
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Container>
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color='secondary' onClick={toggle}>Cancel</Button>
+                    <ModalFooter className='text-center'>
+                        <button className='button-secondary'>Submit score</button>
                     </ModalFooter>
+                    </form>
                 </Modal>
             </div>
         );

@@ -29,6 +29,11 @@ $main-green: #136576;
   background-color: $main-green;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 @import 'stylesheets/landing';
 @import 'stylesheets/landing-menu';
@@ -37,3 +42,4 @@ $main-green: #136576;
 @import 'stylesheets/dashboard';
 @import 'stylesheets/tournament';
 @import 'stylesheets/form';
+@import 'stylesheets/modal';

@@ -56,31 +56,6 @@ class NewTournamentPage extends Component<NewTournamentPageProps, NewTournamentP
 
     public render() {
         const {name, game, submitted} = this.state;
-        const customStyles = {
-            option: (provided: any, state: any) => ({
-                ...provided,
-                borderBottom: '1px dotted pink',
-                color: state.isSelected ? 'red' : 'blue',
-                padding: 20,
-            }),
-            valueContainer: (provided: any, state: any) => {
-                return (
-                    {
-                        ...provided,
-                        backgroundColor: '#404040',
-                        borderColor: '#808080',
-                        borderRadius: 20
-                    }
-                );
-            },
-            singleValue: (provided: any, state: any) => {
-                const opacity = state.isSelected ? 0.5 : 1;
-                const transition = 'opacity 300ms';
-
-                return { ...provided, opacity, transition };
-            }
-        }
-
         return (
             <Container fluid={true} className='dashboard'>
                 <DashboardMenu/>
@@ -97,7 +72,7 @@ class NewTournamentPage extends Component<NewTournamentPageProps, NewTournamentP
                             </div>
                             <div className={'form-group' + (submitted && !name ? ' has-error' : '')}>
                                 <label htmlFor='name'>Game</label>
-                                <Select value={game} styles={customStyles} onChange={this.handleChangeSelect} options={this.props.games}/>
+                                <Select value={game} className='form-select-container' classNamePrefix='form-select' onChange={this.handleChangeSelect} options={this.props.games}/>
                                 {submitted && !name &&
                                 <div className='help-block'>Name is required</div>
                                 }
