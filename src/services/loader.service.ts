@@ -11,7 +11,7 @@ function getAllGames() {
     };
 
     // @ts-ignore
-    return fetch(`http://localhost:4000/api/v1/games`, requestOptions).then(handleResponse);
+    return fetch(`http://api.tcreator.pskowron.ski/api/v1/games`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response: { text: () => { then: (arg0: (text: any) => any) => void; }; ok: any; status: number; statusText: any; }) {

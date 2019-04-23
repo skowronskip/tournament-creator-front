@@ -14,7 +14,7 @@ function login(email: string, password: string) {
         body: JSON.stringify({ email, password })
     };
 
-    return fetch(`http://localhost:4000/api/v1/users/login`, requestOptions)
+    return fetch(`http://api.tcreator.pskowron.ski/api/v1/users/login`, requestOptions)
         .then(handleResponse)
         .then((user) => {
             localStorage.setItem('user', JSON.stringify(user));
@@ -29,7 +29,7 @@ function signup(email: string, password: string, login: string) {
         body: JSON.stringify({ email, password, login })
     };
 
-    return fetch(`http://localhost:4000/api/v1/users/register`, requestOptions)
+    return fetch(`http://api.tcreator.pskowron.ski/api/v1/users/register`, requestOptions)
         .then(handleResponse)
         .then((response) => {
             return response;
@@ -47,7 +47,7 @@ function getAll() {
     };
 
     // @ts-ignore
-    return fetch(`http://localhost:4000/users`, requestOptions).then(handleResponse);
+    return fetch(`http://api.tcreator.pskowron.ski/users`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response: { text: () => { then: (arg0: (text: any) => any) => void; }; ok: any; status: number; statusText: any; }) {
