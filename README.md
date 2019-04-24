@@ -1,44 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Description
+Tournament Creator - still in development.
 
-## Available Scripts
+It is front side for application to manage tournament. Following functionalities ended so far:
+- Sigining Up new Accounts and logging in to application with use of JWT.
+- Creating o tournament with name and one of games from DB
+- Adding, Editing participants of tournaments
+- Generating matches with Round Robin system
+- Editing match score
+- Generating current Table of tournament
 
-In the project directory, you can run:
+# Deployment
+You need Node.js, and the backend API run.
 
-### `npm start`
+1. First install yarn: 'npm i yarn -g'
+2. Then install all packages 'yarn install'
+3. Locally run 'yarn start' to start app
+4. Open 'http://localhost:3000' in your web browser
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Technologies
+Used technologies:
+- React
+- TypeScript
+- Redux
+- Reactstrap
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Demo
+Api is available on: http://api.tcreator.pskowron.ski
+Front client: http://tcreator.pskowron.ski
